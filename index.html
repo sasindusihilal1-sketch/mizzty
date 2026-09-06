@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mizzty.lk - Buy, Sell & Find</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f6f8;
+      color: #222;
+    }
+
+    header {
+      background: #ffffff;
+      padding: 16px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #673ab7;
+    }
+
+    .post-btn {
+      background: #673ab7;
+      color: white;
+      border: none;
+      padding: 11px 18px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #673ab7, #9c5cff);
+      color: white;
+      text-align: center;
+      padding: 55px 20px;
+    }
+
+    .hero h1 {
+      font-size: 38px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 17px;
+      margin-bottom: 25px;
+    }
+
+    .search {
+      max-width: 650px;
+      margin: auto;
+      display: flex;
+      background: white;
+      padding: 6px;
+      border-radius: 10px;
+    }
+
+    .search input {
+      flex: 1;
+      border: none;
+      outline: none;
+      padding: 14px;
+      font-size: 16px;
+    }
+
+    .search button {
+      background: #673ab7;
+      color: white;
+      border: none;
+      padding: 0 22px;
+      border-radius: 7px;
+      cursor: pointer;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 35px auto;
+      padding: 0 20px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 15px;
+      margin-bottom: 40px;
+    }
+
+    .category {
+      background: white;
+      padding: 22px 10px;
+      text-align: center;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      cursor: pointer;
+    }
+
+    .category .icon {
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
+
+    .ads {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 20px;
+    }
+
+    .ad {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .ad-image {
+      height: 170px;
+      background: #e7e7e7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 50px;
+    }
+
+    .ad-info {
+      padding: 15px;
+    }
+
+    .ad-info h3 {
+      margin-bottom: 8px;
+    }
+
+    .price {
+      color: #673ab7;
+      font-weight: bold;
+      font-size: 18px;
+      margin-bottom: 7px;
+    }
+
+    .location {
+      color: #777;
+      font-size: 14px;
+    }
+
+    footer {
+      margin-top: 50px;
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 30px 15px;
+    }
+
+    footer strong {
+      color: #b388ff;
+    }
+
+    @media(max-width:600px) {
+      .hero h1 {
+        font-size: 30px;
+      }
+
+      .search button {
+        padding: 0 15px;
+      }
+
+      header {
+        padding: 14px 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">Mizzty.lk</div>
+    <button class="post-btn" onclick="postAd()">+ Post Ad</button>
+  </header>
+
+  <section class="hero">
+    <h1>Buy • Sell • Find</h1>
+    <p>Everything you need, all in one place.</p>
+
+    <div class="search">
+      <input type="text" id="searchBox" placeholder="What are you looking for?">
+      <button onclick="searchAds()">Search</button>
+    </div>
+  </section>
+
+  <div class="container">
+
+    <h2>Browse Categories</h2>
+
+    <div class="categories">
+
+      <div class="category" onclick="category('Vehicles')">
+        <div class="icon">🚗</div>
+        <b>Vehicles</b>
+      </div>
+
+      <div class="category" onclick="category('Phones')">
+        <div class="icon">📱</div>
+        <b>Phones</b>
+      </div>
+
+      <div class="category" onclick="category('Electronics')">
+        <div class="icon">💻</div>
+        <b>Electronics</b>
+      </div>
+
+      <div class="category" onclick="category('Property')">
+        <div class="icon">🏠</div>
+        <b>Property</b>
+      </div>
+
+      <div class="category" onclick="category('Jobs')">
+        <div class="icon">💼</div>
+        <b>Jobs</b>
+      </div>
+
+      <div class="category" onclick="category('Fashion')">
+        <div class="icon">👕</div>
+        <b>Fashion</b>
+      </div>
+
+      <div class="category" onclick="category('Services')">
+        <div class="icon">🛠️</div>
+        <b>Services</b>
+      </div>
+
+      <div class="category" onclick="category('Other')">
+        <div class="icon">📦</div>
+        <b>Other</b>
+      </div>
+
+    </div>
+
+    <h2>Latest Ads</h2>
+
+    <div class="ads">
+
+      <div class="ad">
+        <div class="ad-image">🚗</div>
+        <div class="ad-info">
+          <h3>Suzuki Alto</h3>
+          <div class="price">Rs. 2,450,000</div>
+          <div class="location">📍 Colombo</div>
+        </div>
+      </div>
+
+      <div class="ad">
+        <div class="ad-image">📱</div>
+        <div class="ad-info">
+          <h3>Samsung Galaxy</h3>
+          <div class="price">Rs. 85,000</div>
+          <div class="location">📍 Kalutara</div>
+        </div>
+      </div>
+
+      <div class="ad">
+        <div class="ad-image">💻</div>
+        <div class="ad-info">
+          <h3>Laptop</h3>
+          <div class="price">Rs. 120,000</div>
+          <div class="location">📍 Galle</div>
+        </div>
+      </div>
+
+      <div class="ad">
+        <div class="ad-image">🏠</div>
+        <div class="ad-info">
+          <h3>House for Sale</h3>
+          <div class="price">Rs. 12,500,000</div>
+          <div class="location">📍 Kandy</div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <footer>
+    <strong>Mizzty.lk</strong>
+    <br><br>
+    Buy • Sell • Find
+    <br><br>
+    © 2026 Mizzty.lk
+  </footer>
+
+  <script>
+    function postAd() {
+      alert("Post Ad feature coming soon!");
+    }
+
+    function searchAds() {
+      const text = document.getElementById("searchBox").value;
+
+      if (text.trim() === "") {
+        alert("Please enter something to search.");
+      } else {
+        alert("Searching for: " + text);
+      }
+    }
+
+    function category(name) {
+      alert("You selected: " + name);
+    }
+  </script>
+
+</body>
+  </html>
